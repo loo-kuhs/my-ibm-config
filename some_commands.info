@@ -1,0 +1,55 @@
+#############################
+#        HERCULES           #
+#############################
+LOADPARM
+IPL 0A80
+
+#############################
+#           VTAM            #
+#############################
+r 00,CLOCK=17.41.00 <- Reemplazar 17.41.00 por la hora actual
+r 00,u
+
+1,reload
+
+#############################
+#         STOP VTAM         #
+#############################
+s shutdown <- Parar procesos
+c cicsa    <- Detener manualmente el CICS
+$pjes2     <- Parar JES2
+z eod
+quiesce    <- Parar procesadores emulados
+
+#############################
+#    DEFAULT LOGON VTAM     #
+#############################
+LOGON IBMUSER <- Contraseña: sys1
+
+///#############################
+///#    LOGON VTAM NOTES       #
+///#############################
+/// Procedure ===> DBSPROC <- Para acceder con DB2
+
+
+#############################
+#         STOP DB2          #
+#############################
+Opción Z en DB2 Admin
+Opción 2S
+force <- para detener la base de datos
+
+#############################
+#           CICS            #
+#############################
+l cics        <- Iniciar CICS
+cemt i tas    <- Visualizar tareas activas
+ceda di group <- Ver grupos de transacciones
+cesf logoff   <- Cerrar CICS
+
+NOTA: presionar botón PAUSE para limpiar la pantalla
+
+///#############################
+///#       STOP L CICS         #
+///#############################
+/// CEMT P SHUT I
