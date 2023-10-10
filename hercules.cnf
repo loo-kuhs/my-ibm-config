@@ -1,0 +1,59 @@
+####################################################################
+#                HERCULES EMULATOR CONTROL FILE                    #
+#     (CONFIGURATION FILE FOR HERCULES & IBM ADCD OS/390 V2R10)    #
+####################################################################
+
+######################
+#  SYSTEM PARAMETERS # 
+######################
+
+MANUFACTURER IBM     # Manufacturer name returned by STSI instruction
+PLANT      02        # Plant number returned by STSI instruction
+CPUSERIAL  012345    # CPU serial number
+MODEL      X87       # Model number returned by STSI instruction
+CPUMODEL   9672      # CPU model
+MAINSIZE   2048      # Main storage size in megabytes
+XPNDSIZE   0         # Expanded storage size in megabytes
+CNSLPORT   23        # TELNET client port number
+NUMCPU     8         # Number of emulated CPUs
+OSTAILOR   QUIET     # Intended operating system
+PANRATE    FAST      # Panel refresh rate
+ARCHMODE   ESA/390   # Initial architecture mode
+PGMPRDOS   LICENSED  # Emulation of IFL HW
+    
+######################
+#   IPL PARAMETER    #
+######################
+#LOADPARM   0A8200M1
+#LOADPARM   0A82CSM1	# OS/390 V2R10 COLD START
+#LOADPARM   0A82WSM1	# OS/390 V2R10 WARM START
+#LOADPARM   0A82DIM1	# OS/390 V2R10 CLPA DB2 & IMS
+#LOADPARM   0A82DCM1	# OS/390 V2R10 WARM DB2
+LOADPARM   0A82DBM1	# OS/390 V2R10 DB2 & CICS
+
+######################
+#    DEVICE LIST     #
+######################
+#---    ----    -----------------------
+000E    1403    C:\OS390\PRT0E.TXT
+000F    1403    C:\OS390\PRT0F.TXT
+0580    3420    *
+0581    3420    *
+0700.4  3270
+0900.4  3270
+0A80    3390    C:\OS390\OS39RA_1.A80
+0A81    3390    C:\OS390\OS3RAA_1.A81
+0A82    3390    C:\OS390\OS39M1_1.A82
+0A83    3390    C:\OS390\OS39PA.A83
+0A84    3390    C:\OS390\OS3PAA.A84
+0A85    3390    C:\OS390\OS39DA_1.A85
+0A86    3390    C:\OS390\OS3DAA_1.A86
+0A87    3390    C:\OS390\OS39HA.A87
+0A88    3390    C:\OS390\OS3DAB.A88
+0A89    3390    C:\OS390\OS3PAB.A89
+0A8A    3390    C:\OS390\OS3PAC_1.A8A
+0A8B    3390    C:\OS390\OS3PAD_1.A8B
+
+#----- --- -- IP REAL---- IP ZOS-------
+0E20.2 LCS -n 192.xxx.x.6 192.xxx.x.150
+#0E20.4  LCS -n 192.xxx.x.202  --oat 0at.txt
